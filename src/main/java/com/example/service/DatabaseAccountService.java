@@ -8,9 +8,8 @@ public class DatabaseAccountService {
 
     private RiskAssessor riskAssessor;
 
-//    @Autowired
+    @Autowired
     public DatabaseAccountService(RiskAssessor riskAssessor) {
-        System.out.println("Invoked by spring");
-        this.riskAssessor = riskAssessor;
+       this.riskAssessor = riskAssessor;
     }
 }
