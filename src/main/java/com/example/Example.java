@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.config.SampleConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,12 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class Example {
 
+    @Autowired
+    SampleConfiguration myBean;
+
     @RequestMapping("/")
     public String home(){
-        return "Hello World";
+        return "Hello World " + myBean.getName() + " \nserver1[" + myBean.getServers().get(0) + "] \nserver2[" + myBean.getServers().get(1) + "]";
     }
 
     public static void main(String[] args) {
+        new SpringApplication().setAddCommandLineProperties(false);
         SpringApplication.run(Example.class, args);
     }
 
